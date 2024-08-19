@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Delete Locker</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-image:
+		url('https://img.etimg.com/thumb/width-1200,height-900,imgsize-273406,resizemode-75,msid-85430100/wealth/save/banks-will-be-liable-for-loss-of-locker-contents-but-only-up-to-100-times-annual-rent.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+nav {
+	background-color: #333;
+	padding: 10px 0;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+nav ul li {
+	display: inline;
+	margin-right: 20px;
+}
+
+nav ul li a {
+	color: #fff;
+	text-decoration: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+	background-color: #555;
+}
+
+nav {
+	background-color: #333;
+	padding: 10px 0;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+nav ul li {
+	display: inline;
+	margin-right: 20px;
+}
+
+nav ul li a {
+	color: #fff;
+	text-decoration: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+	background-color: #555;
+}
+
+.form-table {
+	margin: 50px auto;
+	background-color: rgba(255, 255, 255, 0.8);
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.form-table td {
+	padding: 10px;
+}
+
+.form-table input[type="text"], .form-table input[type="submit"] {
+	width: 100%;
+	padding: 8px;
+	margin-top: 5px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+.form-table input[type="submit"] {
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+.form-table input[type="submit"]:hover {
+	background-color: #45a049;
+}
+
+footer {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 3px 0;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+</style>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a href="Home.html">Home</a></li>
+			<li><a href="./Insert.html">Insert</a></li>
+			<li><a href="./update.html">Update</a></li>
+			<li><a href="./delete.html">Delete</a></li>
+			<li><a href="./list.html">List</a></li>
+			<li><a href="./search.html">Search</a></li>
+			<li style="color: white;">Consultation Number: 123-456-789</li>
+		</ul>
+	</nav>
+	<form action="./DeleteLocker" method="post">
+		<table class="form-table">
+			<tr>
+				<td colspan="2">
+					<fieldset>
+						<legend>
+							<h1>Enter locker details</h1>
+						</legend>
+						<table>
+							<tr>
+								<td>Enter Locker ID:</td>
+								<td><input type="text" name="lockerId" /></td>
+							</tr>
+							<tr>
+								<td><input type="submit" value="Delete Locker" /></td>
+							</tr>
+						</table>
+					</fieldset>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<footer>
+		<p style="color: white;">&copy; 2024 LockerDBMS. All rights
+			reserved.</p>
+	</footer>
+</body>
+</html>
+

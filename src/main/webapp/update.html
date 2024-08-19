@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bank Locker Management System</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://c8.alamy.com/comp/2K2KG8W/gold-ingots-inside-private-bank-deposit-box-3d-illustration-2K2KG8W.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+.form-table {
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.form-table td {
+    padding: 10px;
+}
+
+.form-table input[type="text"], .form-table input[type="submit"], .form-table select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-table input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.form-table input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 3px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.error {
+    color: red;
+}
+</style>
+<script>
+function displaySizeOptions() {
+    document.getElementById('sizeRow').style.display = 'table-row';
+}
+
+function displayCategoryOptions() {
+    document.getElementById('categoryRow').style.display = 'table-row';
+}
+
+function displaySubCategoryOptions() {
+    var category = document.getElementById('category').value;
+    var jewelsRow = document.getElementById('jewelsRow');
+    var documentsRow = document.getElementById('documentsRow');
+    var contactRow = document.getElementById('contactRow');
+    var emailRow = document.getElementById('emailRow');
+    var agreementRow = document.getElementById('agreementRow');
+    var submitRow = document.getElementById('submitRow');
+
+    jewelsRow.style.display = (category === 'jewels') ? 'table-row' : 'none';
+    documentsRow.style.display = (category === 'documents') ? 'table-row' : 'none';
+    contactRow.style.display = 'table-row';
+    emailRow.style.display = 'table-row';
+    agreementRow.style.display = 'table-row';
+    submitRow.style.display = 'table-row';
+}
+
+
+function validateEmail() {
+    var email = document.getElementById('email').value;
+    var errorEmail = document.getElementById('errorEmail');
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(email)) {
+        errorEmail.style.display = 'table-row';
+    } else {
+        errorEmail.style.display = 'none';
+        document.getElementById('agreementRow').style.display = 'table-row';
+    }
+}
+
+function showTermsAndConditions() {
+    alert("Terms and Conditions:\n\n1. The locker should only be used for the specified category items.\n2. The bank is not responsible for the contents stored in the locker.\n3. The locker rent should be paid annually.\n4. The bank reserves the right to open the locker if the rent is not paid.\n5. The locker should not be used for illegal activities.");
+}
+function enableSubmit() {
+    var agreeCheckbox = document.getElementById('agree');
+    var submitButton = document.getElementById('submitRow').getElementsByTagName('input')[0];
+    
+    if (agreeCheckbox.checked) {
+        submitButton.disabled = false;
+        document.getElementById('lockerForm').reset();
+    } else {
+        submitButton.disabled = true;
+    }
+}
+
+</script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="./Insert.html">Insert</a></li>
+            <li><a href="./update.html">Update</a></li>
+            <li><a href="./delete.html">Delete</a></li>
+            <li><a href="./list.html">List</a></li>
+            <li><a href="./search.html">Search</a></li>
+            <li style="color: white;">Consultation Number: 123-456-789</li>
+        </ul>
+    </nav>
+    <form action="./UpdateLocker" method="post">
+        <table class="form-table">
+            <tr>
+                <td colspan="2">
+                    <fieldset>
+                        <legend>
+                            <h1>Enter locker details</h1>
+                        </legend>
+                        <table>
+                            <tr>
+                                <td>Enter Locker ID:</td>
+                                <td><input type="text" name="lockerrId" oninput="displaySizeOptions()"/></td>
+                            </tr>
+                            <tr>
+                                <td>Enter Locker Name:</td>
+                                <td><input type="text" name="lockerName" /></td>
+                            </tr>
+                            <tr id="sizeRow" style="display:none;">
+                                <td>Enter Locker Size:</td>
+                                <td>
+                                    <select id="size" name="size" onchange="displayCategoryOptions()">
+                                        <option value="">Select Size</option>
+                                        <option value="small">Small</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="large">Large</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="categoryRow" style="display:none;">
+                                <td>Enter Category:</td>
+                                <td>
+                                    <select id="category" name="category" onchange="displaySubCategoryOptions()">
+                                        <option value="">Select Category</option>
+                                        <option value="jewels">Jewels</option>
+                                        <option value="documents">Documents</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="jewelsRow" style="display:none;">
+                                <td>Select Jewels Type:</td>
+                                <td>
+                                    <select name="jewelsType">
+                                        <option value="gold">Gold</option>
+                                        <option value="silver">Silver</option>
+                                        <option value="platinum">Platinum</option>
+                                        <option value="diamonds">Diamond</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="documentsRow" style="display:none;">
+                                <td>Select Documents Type:</td>
+                                <td>
+                                    <select name="documentsType">
+                                        <option value="property">Property</option>
+                                        <option value="legal">Legal</option>
+                                        <option value="personal">Personal</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="contactRow" style="display:none;">
+                                <td>Enter Contact Number:</td>
+                                <td><input type="text" name="contactNumber" /></td>
+                            </tr>
+                            <tr id="emailRow" style="display:none;">
+                                <td>Enter Email:</td>
+                                <td><input type="text" id="email" name="email" oninput="validateEmail()"/></td>
+                            </tr>
+                            <tr id="errorEmail" style="display:none;">
+                                <td colspan="2" class="error">Please enter a valid email address.</td>
+                            </tr>
+                            <tr id="agreementRow" style="display:none;">
+                                <td colspan="2">
+                                    <button type="button" onclick="showTermsAndConditions()">Terms and Conditions</button>
+                                    <input type="checkbox" id="agree" name="agree" onclick="enableSubmit()">
+                                    <label for="agree">I agree to the terms and conditions</label>
+                                </td>
+                            </tr>
+                                <tr id="submitRow" style="display:none;">
+                                <td colspan="2"><input type="submit" value="Add Locker" disabled/></td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <footer>
+        <p style="color: white;">&copy; 2024 LockerDBMS. All rights reserved.</p>
+    </footer>
+</body>
+</html>
